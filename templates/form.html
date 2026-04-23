@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@
 
 <div class="container">
 
- <div class="form_title"><img src="/static/logo/logo.png" class="form-logo"><h2>खालील अर्ज भरा</h2> 
+ <div class="form_title"><img src="{% static 'logo/logo.png' %}" class="form-logo"><h2>खालील अर्ज भरा</h2> 
 </div>
     <form method="post">
         {% csrf_token %}

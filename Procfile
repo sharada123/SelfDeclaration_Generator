@@ -1,1 +1,1 @@
-web: gunicorn pdfproject.wsgi
+web: gunicorn nageshwarcomputers.wsgi
