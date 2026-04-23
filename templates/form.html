@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>रहिवाशी स्वयंघोषणापत्र</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d1982f, #41321d,#d1982f);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+       
+        form p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #ca7513;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ca7513;
+            border: none;
+            color: white;
+            font-weight: bolder;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #814602;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: rgb(148, 147, 147);
+        }
+ 
+
+.form_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;           /* logo आणि text मध्ये space */
+}
+
+.form-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.form_title h2 {
+    margin: 0;           /* default margin काढतो (important) */
+}
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+ <div class="form_title"><img src="/static/logo/logo.png" class="form-logo"><h2>खालील अर्ज भरा</h2> 
+</div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">⬇ Download PDF</button>
+    </form>
+
+    <div class="footer">
+        Made with Sharada Barkade  💙
+    </div>
+
+</div>
+<script>
+const talukaData = {
+    "पुणे": ["दौंड", "बारामती", "इंदापूर", "शिरूर", "हवेली", "मुळशी", "मावळ", "जुन्नर"],
+    "मुंबई": ["मुंबई शहर", "मुंबई उपनगर"],
+    "नागपूर": ["नागपूर शहर", "हिंगणा", "काटोल", "कामठी"],
+    "नाशिक": ["नाशिक", "सिन्नर", "मालेगाव", "निफाड"],
+    "अहमदनगर": ["राहाता", "श्रीरामपूर", "कर्जत", "संगमनेर"]
+};
+
+const districtSelect = document.getElementById("id_district");
+const talukaSelect = document.getElementById("id_taluka");
+
+districtSelect.addEventListener("change", function () {
+    const selectedDistrict = this.value;
+
+    talukaSelect.innerHTML = '<option value="">तालुका निवडा</option>';
+
+    if (talukaData[selectedDistrict]) {
+        talukaData[selectedDistrict].forEach(function (taluka) {
+            let option = document.createElement("option");
+            option.value = taluka;
+            option.text = taluka;
+            talukaSelect.appendChild(option);
+        });
+    }
+});
+</script>
+</body>
+</html>
