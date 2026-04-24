@@ -60,7 +60,7 @@ def generate_pdf(request):
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="output.pdf"'
 
-        HTML(string=html_string).write_pdf(
+        HTML(string=html_string, base_url=settings.BASE_DIR).write_pdf(
             response,
             stylesheets=[
                 CSS(string=f"""
