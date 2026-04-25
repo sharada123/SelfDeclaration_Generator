@@ -5,21 +5,13 @@
 <head>
     <meta charset="UTF-8">
 <style>
-@font-face {
-    font-family: 'Marathi';
-    src: url("{{ base_url }}static/fonts/NotoSansDevanagari-Regular.ttf");
-}
 
-@font-face {
-    font-family: 'Marathi';
-    src: url("{{ base_url }}static/fonts/NotoSansDevanagari-Bold.ttf");
-    font-weight: bold;
-}
 
 /* 🔥 Page Setup */
 @page {
     size: A4;
     margin: 12mm;
+     border: 1px solid black;
 }
 
 /* 🔥 Body */
@@ -91,7 +83,31 @@ h2 {
 .section, p {
     page-break-inside: avoid;
 }
+.shri{
+    height: 18px;       /* text size match */
+    vertical-align: middle;
 
+}
+.patr  {
+    height: 26px;       /* text size match */
+    vertical-align: middle;
+
+}
+.pr {
+    height: 22px;       /* text size match */
+    vertical-align: middle;
+     margin-right: 0;
+}
+.kr,.patra {
+    height: 12px;       /* text size match */
+    vertical-align: middle;
+
+}
+.patra {
+    height: 15px;       /* text size match */
+    vertical-align: middle;
+
+}
 </style>
 </head>
 
@@ -117,21 +133,21 @@ h2 {
 <!-- 🔷 प्रपत्र - अ -->
 <div class="section">
 
-<h2>प्रपत्र - अ</h2>
-<h2>स्वयं घोषणा पत्र</h2>
+<h2><img src="file:///{{ pr_path|safe }}" class="pr"><img src="file:///{{ patr_path|safe }}" class="patr">- अ</h2>
 
+<h2>स्वयं घोषणा <img src="file:///{{ patr_path|safe }}" class="patr"></h2>
 <p>
-मी <strong>{{ name }}</strong> श्री <strong>{{ father_name }}</strong> यांचा मुलगा/मुलगी/पत्नी,
+मी <strong>{{ name }}</strong> <img src="file:///{{ shri_path|safe }}" class="shri"> <strong>{{ father_name }}</strong> यांचा मुलगा/मुलगी/पत्नी,
 वय <b><span class="num">{{ age }}</span></b> वर्ष, व्यवसाय <strong>{{ occupation }}</strong>,
-राहणार <strong>{{ place }}</strong>, 
-तालुका <strong>{{ taluka }}</strong>, 
+राहणार <strong>{{ place }}</strong>,
+तालुका <strong>{{ taluka }}</strong>,
 जिल्हा <strong>{{ district }}</strong>
 या द्वारे घोषित करतो / करते की, वरील सर्व माहिती माझ्या व्यक्तिगत माहिती व समजुतीनुसार खरी आहे.
 </p>
 
 <p>
 सदर माहिती खोटी आढळून आल्यास, भारतीय दंड संहिता १९६० कलम १९९ व २०० व अन्य / संबंधित कायद्यानुसार
-माझ्यावर खटला भरला जाईल व त्यानुसार मी शिक्षेस पात्र राहीन याची मला पूर्ण जाणीव आहे.
+माझ्यावर खटला भरला जाईल व त्यानुसार मी शिक्षेस <img src="file:///{{ patra_path|safe }}" class="patra"> राहीन याची मला पूर्ण जाणीव आहे .
 </p>
 
 <div class="bottom">
@@ -149,14 +165,13 @@ h2 {
 <!-- 🔷 प्रपत्र - ब -->
 <div class="section">
 
-<h2>प्रपत्र – ब</h2>
-<h2>स्वयं-साक्षांकनासाठी स्वयंघोषणा पत्र</h2>
-
+<h2><img src="file:///{{ pr_path|safe }}" class="pr"><img src="file:///{{ patr_path|safe }}" class="patr"> – ब</h2>
+<h2>स्वयं-साक्षांकनासाठी स्वयंघोषणा <img src="file:///{{ patr_path|safe }}" class="patr"></h2>
 <p>
-मी <strong>{{ name }}</strong> श्री <strong>{{ father_name }}</strong> यांचा मुलगा/मुलगी/पत्नी,
+मी <strong>{{ name }}</strong><img src="file:///{{ shri_path|safe }}" class="shri"> <strong>{{ father_name }}</strong> यांचा मुलगा/मुलगी/पत्नी,
 वय <b><span class="num">{{ age }}</span></b> वर्ष, व्यवसाय <strong>{{ occupation }}</strong>,
-राहणार <strong>{{ place }}</strong>, 
-तालुका <strong>{{ taluka }}</strong>, 
+राहणार <strong>{{ place }}</strong>,
+तालुका <strong>{{ taluka }}</strong>,
 जिल्हा <strong>{{ district }}</strong>
 या द्वारे घोषित करतो / करते की, स्वयं साक्षांकित केलेल्या प्रती या मूळ कागदपत्रांच्या सत्यप्रती आहेत.
 </p>
@@ -174,7 +189,7 @@ h2 {
     <p class="right">{{ name }}</p>
 </div>
 
-<p>मोबाईल क्र.: <b><span class="num">{{ mobile }}</span></b></p>
+<p>मोबाईल <img src="file:///{{ kr_path|safe }}" class="kr">.: <b><span class="num">{{ mobile }}</span></b></p>
 
 </div>
 
@@ -182,7 +197,7 @@ h2 {
 
 <p style="font-size:12px;">
 टीप: वरील अर्ज भरताना अर्ज लाभार्थीच्या पालकांनी भरावा. “मी” यापुढे अर्जदाराचे नाव व
-“श्री” या पुढे अर्जदाराच्या वडिलांचे नाव लिहावे. अर्जदाराने स्वतःची माहिती भरावी.
+“<img src="file:///{{ shri_path|safe }}" class="shri">” या पुढे अर्जदाराच्या वडिलांचे नाव लिहावे. अर्जदाराने स्वतःची माहिती भरावी.
 लाभार्थीचे वय किमान १८ वर्ष पूर्ण असणे आवश्यक आहे.
 </p>
 <!--page 1 ends-->
@@ -207,11 +222,11 @@ h2 {
     </div>
 </div>
 
-<h2>स्वयं घोषणा पत्र</h2>
+<h2>स्वयं घोषणा <img src="file:///{{ patr_path|safe }}" class="patr"></h2>
 <h2>(रहिवाशीदाखला - लाभार्थी)</h2>
 
 <p>
-मी <b>{{ name }}</b> श्री <b>{{ father_name }}</b> यांचा मुलगा/मुलगी/पत्नी,
+मी <b>{{ name }}</b><img src="file:///{{ shri_path|safe }}" class="shri"> <b>{{ father_name }}</b> यांचा मुलगा/मुलगी/पत्नी,
 वय <b>{{ age }}</b> वर्ष, व्यवसाय <b>{{ occupation }}</b>,
 राहणार <b>{{ place }}</b>,
 ता. <b>{{ taluka }}</b>, जि. <b>{{ district }}</b>
@@ -235,3 +250,4 @@ h2 {
 <!--page 2 ends-->
 </body>
 </html>
+
